@@ -1,0 +1,13 @@
+<div class="user col-12 col-sm-6 col-md-3 col-lg-3" id="<%= user._id %>">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="<%= user.profile %>" alt="Card image cap" style="height:13rem;width:100%">
+        <div class="card-body">
+          <h5 class="card-title"><b>Username :</b> <%= user.username %></h5>
+          <p class="card-text"><b>Email :</b> <%= user.email %></p>
+          <p class="card-text"><b>PhoneNumber:</b> <%= user.phonenumber %></p>
+          <a href="#" class="btn btn-primary verifybutton" userId="<%= user._id %>">Verify</a>
+          <a href="#" class="btn btn-danger deletebutton" userId="<%= user._id %>">Delete</a>
+        </div>
+    </div>
+
+</div>

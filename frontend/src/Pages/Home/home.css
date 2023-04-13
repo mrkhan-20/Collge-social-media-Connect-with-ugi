@@ -1,0 +1,13 @@
+.home{
+          background-color: rgb(235, 238, 242);
+          /* background-color: blanchedalmond; */
+          
+}
+
+.ComponentContainer{
+          width: 80%;
+          margin: auto;
+          display: flex;
+          justify-content: space-between;
+          margin-top: 50px;
+}

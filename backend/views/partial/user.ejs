@@ -1,0 +1,36 @@
+<div class="card mb-3 user" style="width: 100%;" id="<%= user._id %>">
+    <div class="row g-0 m-2">
+      <div class="col-md-4">
+        <img src="<%= user.profile %>" class="img-fluid rounded-start productImage" style="height:40vh" alt="...">
+      </div> 
+      <div class="col-md-8">
+        <div class="card-body">
+ 
+            <div class="row mt-3">
+                    <label class="col-sm-3 font-weight-bold" for="user_name">UserName: </label>
+                    <input type="text" class="col-sm-9 username" id="user_name" value="<%= user.username %>"/>
+            </div>
+            <div class="row mt-3">
+                <label class="col-sm-3 font-weight-bold" for="email">email: ₹ </label>
+                    <input class="col-sm-9 email" type="text"  id="email" value="<%= user.email %>"/>
+            </div>
+            <div class="row mt-3">
+                <label class="col-sm-3 font-weight-bold" for="phone">Phone: </label>
+                   <input class="col-sm-9 phone" type="text" id="phone" value="<%= user.phonenumber %>"/>
+            </div>
+
+            
+            <div class="row mt-3">
+              <div class="col-sm-3"></div>
+                <a class="col-sm-4 btn btn-primary button mt-2 updatebutton" userid="<%= user._id %>">Update</a>
+                <div class="col-sm-1"></div>
+                <a class="col-sm-4 btn btn-danger button mt-2 deletebutton"  userid="<%= user._id %>">Unverified</a>
+            </div>
+
+
+
+            
+        </div>
+      </div>
+    </div>
+  </div> 

@@ -1,0 +1,32 @@
+<div class="col-10 col-md-5 container posts-content" id="<%= post._id %>">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="media mb-3">
+                        <img src="<%= post.profile %>" class="d-block ui-w-40 rounded-circle" alt="">
+                        <div class="media-body ml-3">
+                            <%= post.username %>
+                        </div>
+                    </div>
+
+                    <p>
+                        <%= post.title %>
+                    </p>
+                    <img src="<%= post.image %>" style="height:55vh; width:100%;border-radius:5px;" alt="">
+
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <div>
+                        <p href="javascript:void(0)" class="d-inline-block text-muted">
+                            <strong><%= post.like.length %></strong> <small class="align-middle">Likes</small>
+                        </p>
+                        <p href="javascript:void(0)" class="d-inline-block text-muted">
+                            <strong><%= post.dislike.length %></strong> <small class="align-middle">DisLikes</small>
+                        </p>
+                    </div>
+                    <a href="javascript:void(0)" class="d-inline-block text-muted ml-3 deletebutton">
+                        <button class="btn btn-danger"  postid="<%= post._id %>">Delete</button>
+                    </a>
+
+                </div>
+            </div>
+</div>

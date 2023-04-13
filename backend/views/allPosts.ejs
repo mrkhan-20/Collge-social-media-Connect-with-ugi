@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <title>Admin-Page</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap');
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #eee;
+        }
+
+        .posts-content {
+            margin-top: 20px;
+        }
+        .card{
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+        .ui-w-40 {
+            width: 40px !important;
+            height: auto;
+        }
+
+        .default-style .ui-bordered {
+            border: 1px solid rgba(24, 28, 33, 0.06);
+        }
+
+        .ui-bg-cover {
+            background-color: transparent;
+            background-position: center center;
+            background-size: cover;
+        }
+
+        .ui-rect {
+            padding-top: 50% !important;
+        }
+
+        .ui-rect,
+        .ui-rect-30,
+        .ui-rect-60,
+        .ui-rect-67,
+        .ui-rect-75 {
+            position: relative !important;
+            display: block !important;
+            padding-top: 100% !important;
+            width: 100% !important;
+        }
+
+        .d-flex,
+        .d-inline-flex,
+        .media,
+        .media>:not(.media-body),
+        .jumbotron,
+        .card {
+            -ms-flex-negative: 1;
+            flex-shrink: 1;
+        }
+
+        .bg-dark {
+            background-color: rgba(24, 28, 33, 0.9) !important;
+        }
+
+        .card-footer,
+        .card hr {
+            border-color: rgba(24, 28, 33, 0.06);
+        }
+
+        .ui-rect-content {
+            position: absolute !important;
+            top: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            left: 0 !important;
+        }
+
+        .default-style .ui-bordered {
+            border: 1px solid rgba(24, 28, 33, 0.06);
+        }
+    </style>
+
+</head>
+
+<body>
+    <%- include('partial/header'); %>
+        <% if(error){ %>
+            <h1>
+                <%= error %>
+            </h1>
+        <% }else{ %>
+
+            <div class="row">
+                <% for(let i=0;i<posts.length;i++){ %>
+                    <%- include('partial/post',{post:posts[i]}); %>
+
+                <% } %>
+            </div>
+        <% } %>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+        <script>
+            function deletebuttonclicked(event)
+            {
+                let postid=event.target.getAttribute('postid');
+                
+                let req=new XMLHttpRequest();
+                req.open("POST","/deletePost");
+                req.setRequestHeader("Content-Type","application/json");
+                req.addEventListener("load",(res)=>{
+                    console.log(req.responseText);
+                    if(req.responseText=='success')
+                    {
+                        document.getElementById(postid).remove();
+
+                    }
+                    else{
+                        console.log(req.responseText);
+                    }
+                });
+                req.send(JSON.stringify({postid}));
+
+
+            }
+            let deletebuttons=document.getElementsByClassName("deletebutton");
+            for(let i=0;i<deletebuttons.length;i++)
+            {
+                deletebuttons[i].addEventListener("click",deletebuttonclicked);
+            }
+            
+        </script>
+</body>
+
+</html>
