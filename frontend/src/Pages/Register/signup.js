@@ -72,8 +72,6 @@ export default function Signup() {
     // Handle unsuccessful uploads
   }, 
   () => {
-    // Handle successful uploads on complete
-    // For instance, get the download URL: https://firebasestorage.googleapis.com/...
     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
       try{
         signup(dispatch ,{email , password , username , phonenumber , profile:downloadURL});
